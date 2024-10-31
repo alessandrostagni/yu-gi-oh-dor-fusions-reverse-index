@@ -80,7 +80,7 @@ def parse_table(table_url):
     return data
 
 def main():
-    url = 'C:/Users/darth/Code/yugioh-dor-fusions/yugipedia.htm'
+    url = 'C:/Users/darth/Code/yu-gi-oh-dor-fusions-reverse-index/yugipedia.htm'
     tables = parse_table(url)
     duplicates = set()
     with open('reverse_index.htm', 'w') as w:
@@ -88,12 +88,12 @@ def main():
         w.write('<a href="https://yugipedia.com/wiki/List_of_Yu-Gi-Oh!_The_Duelists_of_the_Roses_Fusions">Original fusion list:</a>')
         w.write('<hr/>')
         for k in reverse_index:
-            w.write(f'<h1>{reverse_index[k]['card_url']}</h1>')
+            w.write(f'<h1>#{reverse_index[k]['card_url']}</h1>')
             for t, v in reverse_index[k].items():
                 if t != 'card_url':
-                    w.write(f'<h2>{t}</h2>')
+                    w.write(f'<h3>{t}</h3>')
                     for material in v:
-                        w.write(f'<h3>When used in position {(material[1])}:</h3>')
+                        w.write(f'<h4>When used in position {(material[1])}:</h4>')
                         w.write(str(material[0]))
                         w.write('<hr/>')
 
